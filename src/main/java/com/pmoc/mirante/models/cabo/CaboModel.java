@@ -1,6 +1,7 @@
 package com.pmoc.mirante.models.cabo;
 
 import com.pmoc.mirante.enums.Categories;
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.enums.TiposCabo;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
@@ -28,6 +29,9 @@ public class CaboModel implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 100)
     private TiposCabo tipos_cabo;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private Status status;
     @Column(nullable = false)
     private Double tamanho;
     @ManyToOne

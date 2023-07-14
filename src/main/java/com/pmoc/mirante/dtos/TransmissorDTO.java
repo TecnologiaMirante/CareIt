@@ -1,5 +1,6 @@
 package com.pmoc.mirante.dtos;
 
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.antena.AntenaModel;
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.models.gerais.DadosGerais;
@@ -11,6 +12,8 @@ public record TransmissorDTO(
         @NotNull
         @Valid
         DadosGerais gerais,
+        @NotNull
+        Status status,
         @NotNull
         Categories category,
         @NotNull

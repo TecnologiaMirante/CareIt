@@ -1,6 +1,7 @@
 package com.pmoc.mirante.models.torre;
 
 import com.pmoc.mirante.enums.Categories;
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.enums.TiposTorre;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
@@ -33,6 +34,9 @@ public class TorreModel implements Serializable {
     private Boolean aterramento;
     @Column(nullable = false, length = 250)
     private Double altura;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private Status status;
     @ManyToOne
     @JoinColumn(name = "station_id", nullable = false)
     private StationModel station;

@@ -2,6 +2,7 @@ package com.pmoc.mirante.models.dps;
 
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.ClasseDPS;
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
 import jakarta.persistence.*;
@@ -29,6 +30,9 @@ public class DPSModel implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 100)
     private ClasseDPS classe;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private Status status;
     @Column(nullable = false, length = 100)
     private int corrente_maxima;
     @ManyToOne

@@ -1,6 +1,7 @@
 package com.pmoc.mirante.models.combinador;
 
 import com.pmoc.mirante.enums.Categories;
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
 import jakarta.persistence.*;
@@ -25,6 +26,9 @@ public class CombinadorModel implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 100)
     private Categories category;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private Status status;
     @ManyToOne
     @JoinColumn(name = "station_id", nullable = false)
     private StationModel station;

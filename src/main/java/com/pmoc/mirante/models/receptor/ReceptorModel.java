@@ -1,6 +1,7 @@
 package com.pmoc.mirante.models.receptor;
 
 import com.pmoc.mirante.enums.Categories;
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.parabolica.Parabolica;
 import com.pmoc.mirante.models.station.StationModel;
@@ -31,7 +32,9 @@ public class ReceptorModel  implements Serializable {
     @ManyToOne
     @JoinColumn(name = "parabolica_id", nullable = false)
     private Parabolica parabolica;
-
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private Status status;
     @ManyToOne
     @JoinColumn(name = "station_id", nullable = false)
     private StationModel station;

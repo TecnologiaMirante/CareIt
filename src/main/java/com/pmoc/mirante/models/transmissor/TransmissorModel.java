@@ -1,5 +1,6 @@
 package com.pmoc.mirante.models.transmissor;
 
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.antena.AntenaModel;
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.models.gerais.Gerais;
@@ -32,7 +33,9 @@ public class TransmissorModel implements Serializable {
     private Double canal_fisico;
     @Column(nullable = false, length = 130)
     private Double canal_virtual;
-
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private Status status;
     @OneToOne(cascade = CascadeType.ALL)
     private ReceptorModel receptor;
     @ManyToOne

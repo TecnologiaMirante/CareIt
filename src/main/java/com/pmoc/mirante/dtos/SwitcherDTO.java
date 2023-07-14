@@ -1,6 +1,7 @@
 package com.pmoc.mirante.dtos;
 
 import com.pmoc.mirante.enums.Categories;
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.gerais.DadosGerais;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -11,6 +12,8 @@ public record SwitcherDTO(
         DadosGerais gerais,
         @NotNull
         int qtd_portas,
+        @NotNull
+        Status status,
         @NotNull
         Categories category
 ) {

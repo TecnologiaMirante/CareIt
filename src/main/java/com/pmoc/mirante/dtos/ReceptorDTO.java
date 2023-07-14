@@ -1,6 +1,7 @@
 package com.pmoc.mirante.dtos;
 
 import com.pmoc.mirante.enums.Categories;
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.gerais.DadosGerais;
 import com.pmoc.mirante.models.parabolica.Parabolica;
 import jakarta.validation.Valid;
@@ -12,6 +13,8 @@ public record ReceptorDTO(
         DadosGerais gerais,
         @NotNull
         int frequency,
+        @NotNull
+        Status status,
         @NotNull
         int symbol_rate,
         @NotNull

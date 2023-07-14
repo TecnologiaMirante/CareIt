@@ -1,6 +1,7 @@
 package com.pmoc.mirante.dtos;
 
 import com.pmoc.mirante.enums.Categories;
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.gerais.DadosGerais;
 import com.pmoc.mirante.models.receptor.ReceptorModel;
 import jakarta.validation.Valid;
@@ -15,6 +16,8 @@ public record ParabolicaDTO(
         DadosGerais gerais,
         @NotNull
         Double diametro,
+        @NotNull
+        Status status,
         @NotBlank
         String satelite,
         @NotNull

@@ -1,6 +1,7 @@
 package com.pmoc.mirante.models.telemetria;
 
 import com.pmoc.mirante.enums.Categories;
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
 import jakarta.persistence.*;
@@ -23,6 +24,9 @@ public class TelemetriaModel implements Serializable {
     private Gerais gerais;
     @Column(nullable = false, length = 130)
     private Categories category;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private Status status;
     @ManyToOne
     @JoinColumn(name = "station_id", nullable = false)
     private StationModel station;

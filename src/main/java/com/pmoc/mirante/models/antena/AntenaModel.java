@@ -1,6 +1,7 @@
 package com.pmoc.mirante.models.antena;
 
 import com.pmoc.mirante.enums.Categories;
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.enums.TiposAntena;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
@@ -27,6 +28,9 @@ public class AntenaModel implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 250)
     private Categories category;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private Status status;
     @Column(nullable = false, length = 250)
     private String gain;
     @Column(nullable = false, length = 100)

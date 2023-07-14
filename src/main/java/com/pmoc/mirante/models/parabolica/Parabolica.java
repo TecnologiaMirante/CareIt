@@ -1,6 +1,7 @@
 package com.pmoc.mirante.models.parabolica;
 
 import com.pmoc.mirante.enums.Categories;
+import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.receptor.ReceptorModel;
 import com.pmoc.mirante.models.station.StationModel;
@@ -29,6 +30,9 @@ public class Parabolica  implements Serializable {
     private Double diametro;
     @Column(nullable = false, length = 250)
     private String satelite;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 50)
+    private Status status;
 
     @OneToMany(mappedBy = "parabolica")
     private List<ReceptorModel> receptor;
