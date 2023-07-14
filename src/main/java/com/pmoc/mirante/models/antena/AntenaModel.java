@@ -47,7 +47,7 @@ public class AntenaModel implements Serializable {
     private LocalDateTime updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "station_id", nullable = false)
+    @JoinColumn(name = "station_id")
     private StationModel station;
 
 }

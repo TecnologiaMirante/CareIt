@@ -39,10 +39,11 @@ public class TransmissorModel implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     private ReceptorModel receptor;
     @ManyToOne
-    @JoinColumn(name = "antena_id", nullable = false)
+    @JoinColumn(name = "antena_id")
     private AntenaModel antena;
     @ManyToOne
-    @JoinColumn(name = "station_id", nullable = false)
+    @JoinColumn(name = "station_id")
+    @JoinColumn(name = "station_id")
     private StationModel station;
     @Column(nullable = false)
     private LocalDateTime createdAt;

@@ -35,7 +35,7 @@ public class CaboModel implements Serializable {
     @Column(nullable = false)
     private Double tamanho;
     @ManyToOne
-    @JoinColumn(name = "station_id", nullable = false)
+    @JoinColumn(name = "station_id")
     private StationModel station;
     @Column(nullable = false)
     private LocalDateTime createdAt;

@@ -31,7 +31,7 @@ public class SwitcherModel implements Serializable {
     @Column(nullable = false, length = 100)
     private Categories category;
     @ManyToOne
-    @JoinColumn(name = "station_id", nullable = false)
+    @JoinColumn(name = "station_id")
     private StationModel station;
     @Column(nullable = false)
     private LocalDateTime createdAt;

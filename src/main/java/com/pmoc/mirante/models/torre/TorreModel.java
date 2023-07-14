@@ -38,7 +38,7 @@ public class TorreModel implements Serializable {
     @Column(nullable = false, length = 50)
     private Status status;
     @ManyToOne
-    @JoinColumn(name = "station_id", nullable = false)
+    @JoinColumn(name = "station_id")
     private StationModel station;
 
     @Column(nullable = false)

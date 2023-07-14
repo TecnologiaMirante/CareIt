@@ -38,7 +38,7 @@ public class Parabolica  implements Serializable {
     private List<ReceptorModel> receptor;
 
     @ManyToOne
-    @JoinColumn(name = "station_id", nullable = false)
+    @JoinColumn(name = "station_id")
     private StationModel station;
 
     @Enumerated(EnumType.STRING)
