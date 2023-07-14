@@ -43,7 +43,6 @@ public class TransmissorModel implements Serializable {
     private AntenaModel antena;
     @ManyToOne
     @JoinColumn(name = "station_id")
-    @JoinColumn(name = "station_id")
     private StationModel station;
     @Column(nullable = false)
     private LocalDateTime createdAt;
