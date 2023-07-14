@@ -2,6 +2,7 @@ package com.pmoc.mirante.models.arcondicionado;
 
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
+import com.pmoc.mirante.models.gerais.DadosGerais;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
 import jakarta.persistence.*;
@@ -20,7 +21,7 @@ public class ArCondicionado implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @Embedded
-    private Gerais gerais;
+    private DadosGerais gerais;
     @Column(nullable = false, length = 100)
     private int potencia;
     @Enumerated(EnumType.STRING)

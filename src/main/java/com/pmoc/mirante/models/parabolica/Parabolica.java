@@ -2,6 +2,7 @@ package com.pmoc.mirante.models.parabolica;
 
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
+import com.pmoc.mirante.models.gerais.DadosGerais;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.receptor.ReceptorModel;
 import com.pmoc.mirante.models.station.StationModel;
@@ -25,7 +26,7 @@ public class Parabolica  implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @Embedded
-    private Gerais gerais;
+    private DadosGerais gerais;
     @Column(nullable = false, length = 250)
     private Double diametro;
     @Column(nullable = false, length = 250)
