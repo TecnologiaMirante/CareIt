@@ -5,7 +5,6 @@ import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.enums.TiposAntena;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
-import com.pmoc.mirante.models.transmissor.TransmissorModel;
 import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
