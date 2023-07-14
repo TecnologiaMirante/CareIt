@@ -42,8 +42,6 @@ public class AllController {
     private TorreService torreService;
     @Autowired
     private TransmissorService transmissorService;
-    @Autowired
-    private StationService stationService;
     private List<Object> myList = new ArrayList<>();
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
@@ -60,7 +58,6 @@ public class AllController {
         var telemetria = telemetriaService.findAll();
         var torre = torreService.findAll();
         var transmissor = transmissorService.findAll();
-        var station = stationService.findAll();
 
         myList.add(antena);
         myList.add(arCondicionados);
