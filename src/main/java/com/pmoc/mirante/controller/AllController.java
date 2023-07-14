@@ -74,7 +74,7 @@ public class AllController {
         myList.add(telemetria);
         myList.add(torre);
         myList.add(transmissor);
-        myList.add(station);
+
         return ResponseEntity.status(HttpStatus.OK).body(myList);
     }
 }
