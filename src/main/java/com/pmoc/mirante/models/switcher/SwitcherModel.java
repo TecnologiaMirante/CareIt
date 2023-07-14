@@ -2,7 +2,6 @@ package com.pmoc.mirante.models.switcher;
 
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
-import com.pmoc.mirante.models.gerais.DadosGerais;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
 import jakarta.persistence.*;
@@ -22,7 +21,7 @@ public class SwitcherModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @Embedded
-    private DadosGerais gerais;
+    private Gerais gerais;
     @Column(nullable = false, length = 100)
     private int qtd_portas;
     @Enumerated(EnumType.STRING)

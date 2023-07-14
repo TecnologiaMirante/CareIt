@@ -4,6 +4,7 @@ import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.enums.TiposAntena;
 import com.pmoc.mirante.models.gerais.DadosGerais;
+import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.transmissor.TransmissorModel;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -14,7 +15,7 @@ import java.util.List;
 public record AntenaDTO(
         @NotNull
         @Valid
-        DadosGerais gerais,
+        Gerais gerais,
         @NotNull
         Status status,
         @NotNull

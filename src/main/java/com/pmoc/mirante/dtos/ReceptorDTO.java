@@ -3,6 +3,7 @@ package com.pmoc.mirante.dtos;
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.gerais.DadosGerais;
+import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.parabolica.Parabolica;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -10,7 +11,7 @@ import jakarta.validation.constraints.NotNull;
 public record ReceptorDTO(
         @NotNull
         @Valid
-        DadosGerais gerais,
+        Gerais gerais,
         @NotNull
         int frequency,
         @NotNull

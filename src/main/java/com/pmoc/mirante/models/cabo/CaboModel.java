@@ -3,7 +3,6 @@ package com.pmoc.mirante.models.cabo;
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.enums.TiposCabo;
-import com.pmoc.mirante.models.gerais.DadosGerais;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
 import jakarta.persistence.*;
@@ -23,7 +22,7 @@ public class CaboModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @Embedded
-    private DadosGerais gerais;
+    private Gerais gerais;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 100)
     private Categories category;

@@ -4,13 +4,14 @@ import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.enums.TiposCabo;
 import com.pmoc.mirante.models.gerais.DadosGerais;
+import com.pmoc.mirante.models.gerais.Gerais;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
 public record CaboDTO(
         @NotNull
         @Valid
-        DadosGerais gerais,
+        Gerais gerais,
         @NotNull
         Categories category,
         @NotNull

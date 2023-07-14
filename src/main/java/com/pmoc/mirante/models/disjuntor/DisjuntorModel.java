@@ -2,7 +2,7 @@ package com.pmoc.mirante.models.disjuntor;
 
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
-import com.pmoc.mirante.models.gerais.DadosGerais;
+import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,7 +21,7 @@ public class DisjuntorModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @Embedded
-    private DadosGerais gerais;
+    private Gerais gerais;
     @Column(nullable = false, length = 100)
     private int corrente_maxima;
     @Enumerated(EnumType.STRING)

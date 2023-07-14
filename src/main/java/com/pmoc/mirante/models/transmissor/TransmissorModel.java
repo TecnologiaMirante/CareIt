@@ -3,7 +3,6 @@ package com.pmoc.mirante.models.transmissor;
 import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.antena.AntenaModel;
 import com.pmoc.mirante.enums.Categories;
-import com.pmoc.mirante.models.gerais.DadosGerais;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.receptor.ReceptorModel;
 import com.pmoc.mirante.models.station.StationModel;
@@ -24,7 +23,7 @@ public class TransmissorModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @Embedded
-    private DadosGerais gerais;
+    private Gerais gerais;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 130)
     private Categories category;

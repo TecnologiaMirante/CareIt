@@ -4,6 +4,7 @@ import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.enums.TiposTorre;
 import com.pmoc.mirante.models.gerais.DadosGerais;
+import com.pmoc.mirante.models.gerais.Gerais;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -11,7 +12,7 @@ import jakarta.validation.constraints.NotNull;
 public record TorreDTO(
         @NotNull
         @Valid
-        DadosGerais gerais,
+        Gerais gerais,
         @NotNull
         Status status,
         @NotBlank
