@@ -38,8 +38,6 @@ public class ReceptorModel  implements Serializable {
     @ManyToOne
     @JoinColumn(name = "station_id")
     private StationModel station;
-
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 250)
     private Categories category;
