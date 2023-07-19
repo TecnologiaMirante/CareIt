@@ -9,11 +9,11 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Table(name = "tarefa")
+@Table(name = "task")
 @Entity
 @Getter
 @Setter
-public class Tarefa implements Serializable {
+public class Task implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
