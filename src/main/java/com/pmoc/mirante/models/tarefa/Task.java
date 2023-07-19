@@ -24,7 +24,7 @@ public class Task implements Serializable {
     @Column(nullable = false, length = 120)
     private String description;
     @Column(nullable = false,length = 100)
-    private String verificado;
+    private Boolean verificado;
 
     @ManyToOne
     @JoinColumn(name = "checklist_id")
