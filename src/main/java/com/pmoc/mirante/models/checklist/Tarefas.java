@@ -1,9 +1,13 @@
 package com.pmoc.mirante.models.checklist;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Table(name = "tarefa")
+@Entity
+@Getter
+@Setter
 public class Tarefas {
     @Column(nullable = false, length = 120)
     private String description;

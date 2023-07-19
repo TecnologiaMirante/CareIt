@@ -28,5 +28,4 @@ public class Documents implements Serializable {
     @Column
     private LocalDateTime updatedAt;
 
-
 }
