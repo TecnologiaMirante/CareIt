@@ -28,12 +28,14 @@ public class TelemetriaModel implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 50)
     private Status status;
+
     @ManyToOne
     @JoinColumn(name = "station_id")
     private StationModel station;
     @ManyToOne
     @JoinColumn(name = "tpequipamento_id")
     private TipoEquipamento tipoEquipamento;
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
     @Column

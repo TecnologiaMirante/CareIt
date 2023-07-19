@@ -17,7 +17,6 @@ import com.pmoc.mirante.models.transmissor.TransmissorModel;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
@@ -67,6 +66,5 @@ public class TipoEquipamento implements Serializable {
     private List<TorreModel> torre;
     @OneToMany(mappedBy = "tpequipamento")
     private List<TransmissorModel> transmissor;
-
 
 }

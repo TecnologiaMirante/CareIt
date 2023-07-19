@@ -44,9 +44,11 @@ public class Parabolica  implements Serializable {
     @ManyToOne
     @JoinColumn(name = "tpequipamento_id")
     private TipoEquipamento tipoEquipamento;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 250)
     private Categories category;
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
     @Column
