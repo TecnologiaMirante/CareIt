@@ -12,6 +12,9 @@ import java.util.UUID;
 @Getter
 @Setter
 public class Tarefas implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
