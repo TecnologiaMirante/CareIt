@@ -21,6 +21,10 @@ public class Template implements Serializable {
     @Column(nullable = false, length = 120)
     private String name;
 
-    @ManyToMany(mappedBy = "template")
-    private List<Checklist> checklist;
+    @ManyToMany // Remover o mappedBy, pois a propriedade é mapeada na outra classe
+    @JoinTable(name = "checklist_template",
+            joinColumns = @JoinColumn(name = "template_fk"),
+            inverseJoinColumns = @JoinColumn(name = "checklist_fk")
+    )
+    private List<Checklist> checklists;
 }

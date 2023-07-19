@@ -29,11 +29,7 @@ public class Checklist implements Serializable {
     @OneToMany(mappedBy = "checklist")
     private List<Tarefas> tarefa;
 
-    @ManyToMany
-    @JoinTable(name = "checklist_template",
-    joinColumns = @JoinColumn(name = "checklist_fk"),
-            inverseJoinColumns = @JoinColumn(name = "template_fk")
-    )
+    @ManyToMany(mappedBy = "checklists")
     private List<Template> templates;
 
 }
