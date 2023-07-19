@@ -38,7 +38,7 @@ public class ArCondicionado implements Serializable {
     private StationModel station;
 
     @ManyToOne
-    @JoinColumn(name = "tpequipamento")
+    @JoinColumn(name = "tipo_equipamento_id")
     private TipoEquipamento tipoEquipamento;
 
     @Column(nullable = false)

@@ -51,7 +51,7 @@ public class AntenaModel implements Serializable {
     private StationModel station;
 
     @ManyToOne
-    @JoinColumn(name = "tpequipamento_id")
+    @JoinColumn(name = "tipo_equipamento_id")
     private TipoEquipamento tipoEquipamento;
 
 }

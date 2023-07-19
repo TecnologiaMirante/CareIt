@@ -21,7 +21,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
-@Table(name = "tpequipamento")
+@Table(name = "tipo_equipamento")
 @Entity
 @Getter
 @Setter
@@ -35,36 +35,36 @@ public class TipoEquipamento implements Serializable {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<Checklist> checklist;
 
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<ArCondicionado> arCondicionado;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<AntenaModel> antena;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<CaboModel> cabo;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<CombinadorModel> combinador;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<DisjuntorModel> disjuntor;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<DPSModel> dps;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<ExaustorModel> exaustor;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<NobreakModel> nobreak;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<Parabolica> parabolica;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<ReceptorModel> receptor;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<SwitcherModel> switcher;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<TelemetriaModel> telemetria;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<TorreModel> torre;
-    @OneToMany(mappedBy = "tpequipamento")
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<TransmissorModel> transmissor;
 
 }
