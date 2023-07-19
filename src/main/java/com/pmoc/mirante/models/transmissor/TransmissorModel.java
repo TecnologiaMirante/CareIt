@@ -3,6 +3,7 @@ package com.pmoc.mirante.models.transmissor;
 import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.antena.AntenaModel;
 import com.pmoc.mirante.enums.Categories;
+import com.pmoc.mirante.models.checklist.TipoEquipamento;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.receptor.ReceptorModel;
 import com.pmoc.mirante.models.station.StationModel;
@@ -36,14 +37,22 @@ public class TransmissorModel implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 50)
     private Status status;
+
     @OneToOne(cascade = CascadeType.ALL)
     private ReceptorModel receptor;
+
     @ManyToOne
     @JoinColumn(name = "antena_id")
     private AntenaModel antena;
+
     @ManyToOne
     @JoinColumn(name = "station_id")
     private StationModel station;
+
+    @ManyToOne
+    @JoinColumn(name = "tpequipamento_id")
+    private TipoEquipamento tipoEquipamento;
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
     @Column

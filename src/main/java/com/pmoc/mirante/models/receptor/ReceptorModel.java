@@ -2,6 +2,7 @@ package com.pmoc.mirante.models.receptor;
 
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
+import com.pmoc.mirante.models.checklist.TipoEquipamento;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.parabolica.Parabolica;
 import com.pmoc.mirante.models.station.StationModel;
@@ -38,6 +39,9 @@ public class ReceptorModel  implements Serializable {
     @ManyToOne
     @JoinColumn(name = "station_id")
     private StationModel station;
+    @ManyToOne
+    @JoinColumn(name = "tpequipamento_id")
+    private TipoEquipamento tipoEquipamento;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 250)
     private Categories category;

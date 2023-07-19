@@ -2,6 +2,7 @@ package com.pmoc.mirante.models.arcondicionado;
 
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
+import com.pmoc.mirante.models.checklist.TipoEquipamento;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
 import jakarta.persistence.*;
@@ -31,9 +32,15 @@ public class ArCondicionado implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 100)
     private Categories category;
+
     @ManyToOne
     @JoinColumn(name = "station_id")
     private StationModel station;
+
+    @ManyToOne
+    @JoinColumn(name = "tpequipamento")
+    private TipoEquipamento tipoEquipamento;
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
     @Column
