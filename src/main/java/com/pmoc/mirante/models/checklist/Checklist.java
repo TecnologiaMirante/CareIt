@@ -1,5 +1,6 @@
 package com.pmoc.mirante.models.checklist;
 
+import com.pmoc.mirante.models.tarefa.Tarefa;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +28,7 @@ public class Checklist implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "checklist")
-    private List<Tarefas> tarefa;
+    private List<Tarefa> tarefa;
 
     @ManyToMany(mappedBy = "checklists")
     private List<Template> templates;
