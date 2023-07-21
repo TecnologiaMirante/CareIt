@@ -5,7 +5,6 @@ import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.models.gerais.Gerais;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import java.util.UUID;
 
 public class DisjuntorDTO {
 
@@ -23,9 +22,9 @@ public class DisjuntorDTO {
         private Categories category;
 
         @NotNull
-        private UUID tipoEquipamentoId; // Utilize o tipo adequado para representar o ID do TipoEquipamento
+        private Long tipoEquipamentoId; // Utilize o tipo adequado para representar o ID do TipoEquipamento
 
-        private UUID stationId; // Utilize o tipo adequado para representar o ID da StationModel (se necessário)
+        private Long stationId; // Utilize o tipo adequado para representar o ID da StationModel (se necessário)
 
         // Construtor, getters e setters (ou você pode usar Lombok)
 
@@ -33,7 +32,7 @@ public class DisjuntorDTO {
         }
 
         public DisjuntorDTO(@NotNull @Valid Gerais gerais, @NotNull int corrente_maxima, @NotNull Status status,
-                            @NotNull Categories category, @NotNull UUID tipoEquipamentoId, UUID stationId) {
+                            @NotNull Categories category, @NotNull Long tipoEquipamentoId, Long stationId) {
                 this.gerais = gerais;
                 this.corrente_maxima = corrente_maxima;
                 this.status = status;
@@ -76,19 +75,19 @@ public class DisjuntorDTO {
                 this.category = category;
         }
 
-        public UUID getTipoEquipamentoId() {
+        public Long getTipoEquipamentoId() {
                 return tipoEquipamentoId;
         }
 
-        public void setTipoEquipamentoId(UUID tipoEquipamentoId) {
+        public void setTipoEquipamentoId(Long tipoEquipamentoId) {
                 this.tipoEquipamentoId = tipoEquipamentoId;
         }
 
-        public UUID getStationId() {
+        public Long getStationId() {
                 return stationId;
         }
 
-        public void setStationId(UUID stationId) {
+        public void setStationId(Long stationId) {
                 this.stationId = stationId;
         }
 }
