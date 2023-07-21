@@ -67,4 +67,7 @@ public class TipoEquipamento implements Serializable {
     @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
     private List<TransmissorModel> transmissor;
 
+    public TipoEquipamento(String name) {
+        this.name = name;
+    }
 }

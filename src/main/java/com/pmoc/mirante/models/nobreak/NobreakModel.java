@@ -37,6 +37,7 @@ public class NobreakModel implements Serializable {
     @ManyToOne
     @JoinColumn(name = "station_id")
     private StationModel station;
+
     @ManyToOne
     @JoinColumn(name = "tipo_equipamento_id")
     private TipoEquipamento tipoEquipamento;
