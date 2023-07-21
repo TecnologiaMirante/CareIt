@@ -10,6 +10,8 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.UUID;
+
 public record NobrekDTO(
         @NotNull
         @Valid
@@ -23,7 +25,7 @@ public record NobrekDTO(
         @NotNull
         Categories category,
         @NotNull
-        TipoEquipamento tipoEquipamento,
-        StationModel station
+        Long tipoEquipamentoID,
+        UUID station
 ) {
 }

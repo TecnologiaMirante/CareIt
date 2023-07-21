@@ -12,6 +12,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
+import java.util.UUID;
 
 public record ParabolicaDTO(
         @NotNull
@@ -26,8 +27,8 @@ public record ParabolicaDTO(
         @NotNull
         List<ReceptorModel> receptor,
         @NotNull
-        TipoEquipamento tipoEquipamento,
-        StationModel station,
+        Long tipoEquipamentoID,
+        UUID station,
         @NotNull
         Categories category
 ) {

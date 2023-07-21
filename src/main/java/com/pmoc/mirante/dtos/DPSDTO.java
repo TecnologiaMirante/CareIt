@@ -10,6 +10,8 @@ import com.pmoc.mirante.models.station.StationModel;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.UUID;
+
 public record DPSDTO(
         @NotNull
         @Valid
@@ -23,7 +25,7 @@ public record DPSDTO(
         @NotNull
         int corrente_maxima,
         @NotNull
-        TipoEquipamento tipoEquipamento,
-        StationModel station
+        Long tipoEquipamentoID,
+        UUID station
 ) {
 }

@@ -13,6 +13,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
+import java.util.UUID;
 
 public record AntenaDTO(
         @NotNull
@@ -35,7 +36,7 @@ public record AntenaDTO(
         @NotNull
         List<TransmissorModel> transmissor,
         @NotNull
-        TipoEquipamento tipoEquipamento,
-        StationModel station
+        Long tipoEquipamentoID,
+        UUID station
 ) {
 }

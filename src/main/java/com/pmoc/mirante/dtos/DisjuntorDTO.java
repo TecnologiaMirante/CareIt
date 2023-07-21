@@ -6,6 +6,8 @@ import com.pmoc.mirante.models.gerais.Gerais;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.UUID;
+
 public class DisjuntorDTO {
 
         @NotNull
@@ -24,7 +26,7 @@ public class DisjuntorDTO {
         @NotNull
         private Long tipoEquipamentoId; // Utilize o tipo adequado para representar o ID do TipoEquipamento
 
-        private Long stationId; // Utilize o tipo adequado para representar o ID da StationModel (se necessário)
+        private UUID stationId; // Utilize o tipo adequado para representar o ID da StationModel (se necessário)
 
         // Construtor, getters e setters (ou você pode usar Lombok)
 
@@ -32,7 +34,7 @@ public class DisjuntorDTO {
         }
 
         public DisjuntorDTO(@NotNull @Valid Gerais gerais, @NotNull int corrente_maxima, @NotNull Status status,
-                            @NotNull Categories category, @NotNull Long tipoEquipamentoId, Long stationId) {
+                            @NotNull Categories category, @NotNull Long tipoEquipamentoId, UUID stationId) {
                 this.gerais = gerais;
                 this.corrente_maxima = corrente_maxima;
                 this.status = status;
@@ -83,11 +85,11 @@ public class DisjuntorDTO {
                 this.tipoEquipamentoId = tipoEquipamentoId;
         }
 
-        public Long getStationId() {
+        public UUID getStationId() {
                 return stationId;
         }
 
-        public void setStationId(Long stationId) {
+        public void setStationId(UUID stationId) {
                 this.stationId = stationId;
         }
 }

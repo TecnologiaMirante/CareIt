@@ -9,6 +9,8 @@ import com.pmoc.mirante.models.station.StationModel;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.UUID;
+
 public record ExaustorDTO(
         @NotNull
         @Valid
@@ -18,7 +20,7 @@ public record ExaustorDTO(
         @NotNull
         Categories category,
         @NotNull
-        TipoEquipamento tipoEquipamento,
-        StationModel station
+        Long tipoEquipamentoID,
+        UUID station
 ) {
 }

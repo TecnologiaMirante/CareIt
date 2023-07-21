@@ -11,6 +11,8 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.UUID;
+
 public record TorreDTO(
         @NotNull
         @Valid
@@ -26,7 +28,7 @@ public record TorreDTO(
         @NotNull
         TiposTorre tipos_estrutura,
         @NotNull
-        TipoEquipamento tipoEquipamento,
-        StationModel station
+        Long tipoEquipamentoID,
+        UUID station
 ) {
 }

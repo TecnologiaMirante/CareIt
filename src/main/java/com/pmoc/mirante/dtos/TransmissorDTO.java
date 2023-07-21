@@ -11,6 +11,8 @@ import com.pmoc.mirante.models.station.StationModel;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.UUID;
+
 public record TransmissorDTO(
         @NotNull
         @Valid
@@ -30,7 +32,7 @@ public record TransmissorDTO(
         @NotNull
         Double canal_virtual,
         @NotNull
-        TipoEquipamento tipoEquipamento,
-        StationModel station
+        Long tipoEquipamentoID,
+        UUID station
 ) {
 }
