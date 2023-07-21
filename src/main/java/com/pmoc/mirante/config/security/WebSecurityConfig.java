@@ -24,20 +24,6 @@ public class WebSecurityConfig {
     @Autowired
     private SecurityFilter securityFilter;
     @Bean
-    public SecurityFilterChain config(HttpSecurity http) throws Exception {
-         return http.csrf().disable()
-		                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				                 .and().authorizeHttpRequests()
-						                 .requestMatchers("/login").permitAll()
-								                 .anyRequest().authenticated()
-										                 .and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
-												                 .build();
-    }
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception{
-        return configuration.getAuthenticationManager();
-    }
-    @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfig = new CorsConfiguration();
         corsConfig.addAllowedOrigin("*"); // Permitir todos os origens
@@ -49,6 +35,26 @@ public class WebSecurityConfig {
 
         return new CorsFilter(source);
     }
+    @Bean
+    public SecurityFilterChain config(HttpSecurity http) throws Exception {
+        return http
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .addFilterBefore(corsFilter(), UsernamePasswordAuthenticationFilter.class)
+                .authorizeHttpRequests()
+                .requestMatchers("/login").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception{
+        return configuration.getAuthenticationManager();
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
