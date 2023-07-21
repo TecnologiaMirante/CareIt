@@ -18,7 +18,7 @@ public record DisjuntorDTO(
         Status status,
         @NotNull
         Categories category,
-        @NotBlank
+        @NotNull
         TipoEquipamento tipoEquipamento,
         StationModel station
 ) {
