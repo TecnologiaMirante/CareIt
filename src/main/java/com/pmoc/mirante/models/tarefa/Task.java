@@ -23,8 +23,10 @@ public class Task implements Serializable {
 
     @Column(nullable = false, length = 120)
     private String description;
-    @Column(nullable = false,length = 100)
+    @Column(nullable = false)
     private Boolean verificado;
+    @Column(nullable = false)
+    private Boolean fotocheck;
 
     @ManyToOne
     @JoinColumn(name = "checklist_id")
