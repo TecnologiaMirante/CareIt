@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.security.access.prepost.PreAuthorize;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -43,35 +41,25 @@ public class AllController {
     @Autowired
     private TransmissorService transmissorService;
     private List<Object> myList = new ArrayList<>();
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
-    public ResponseEntity<List<Object>> getAllAntenas() {
-        var antena = antenaService.findAll();
-        var arCondicionados = arcondicionadoService.findAll();
-        var cabos = caboService.findAll();
-        var combinador = combinadorService.findAll();
-        var disjuntor = disjuntorService.findAll();
-        var dps = dpsService.findAll();
-        var nobreak = nobreakService.findAll();
-        var parabolica = parabolicaService.findAll();
-        var switcher = switchService.findAll();
-        var telemetria = telemetriaService.findAll();
-        var torre = torreService.findAll();
-        var transmissor = transmissorService.findAll();
+    public ResponseEntity<AtivosDTO<Object>> getAllAtivos() {
+        var ativosDTO = new AtivosDTO<Object>();
 
-        myList.add(antena);
-        myList.add(arCondicionados);
-        myList.add(cabos);
-        myList.add(combinador);
-        myList.add(disjuntor);
-        myList.add(dps);
-        myList.add(nobreak);
-        myList.add(parabolica);
-        myList.add(switcher);
-        myList.add(telemetria);
-        myList.add(torre);
-        myList.add(transmissor);
+        ativosDTO.setAntenas(Collections.singletonList(antenaService.findAll()));
+        ativosDTO.setArCondicionados(Collections.singletonList(arcondicionadoService.findAll()));
+        ativosDTO.setCabos(Collections.singletonList(caboService.findAll()));
+        ativosDTO.setCombinadores(Collections.singletonList(combinadorService.findAll()));
+        ativosDTO.setDisjuntores(Collections.singletonList(disjuntorService.findAll()));
+        ativosDTO.setDps(Collections.singletonList(dpsService.findAll()));
+        ativosDTO.setNobreaks(Collections.singletonList(nobreakService.findAll()));
+        ativosDTO.setParabolicas(Collections.singletonList(parabolicaService.findAll()));
+        ativosDTO.setSwitchers(Collections.singletonList(switchService.findAll()));
+        ativosDTO.setTelemetrias(Collections.singletonList(telemetriaService.findAll()));
+        ativosDTO.setTorres(Collections.singletonList(torreService.findAll()));
+        ativosDTO.setTransmissores(Collections.singletonList(transmissorService.findAll()));
 
-        return ResponseEntity.status(HttpStatus.OK).body(myList);
+        return ResponseEntity.ok(ativosDTO);
     }
 }
