@@ -47,46 +47,46 @@ public class StationModel implements Serializable {
     @Column(nullable = false, length = 50)
     private Status status;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<ReceptorModel> receptor;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<Parabolica> parabolica;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<AntenaModel> antena;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<ArCondicionado> arCondicionado;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<CaboModel> cabo;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<CombinadorModel> combinador;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<DisjuntorModel> disjuntor;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<DPSModel> dps;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<ExaustorModel> exaustor;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<NobreakModel> nobreak;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<SwitcherModel> switcher;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<TelemetriaModel> telemetria;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<TorreModel> torre;
 
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<TransmissorModel> transmissor;
 
     @Column(nullable = false)
