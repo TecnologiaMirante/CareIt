@@ -4,34 +4,32 @@ import com.pmoc.mirante.models.checklist.TipoEquipamento;
 import com.pmoc.mirante.models.checklist.TipoEquipamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional; // Importe a classe Optional
 
 @Service
 public class TipoEquipamentoServiceImpl implements TipoEquipamentoService {
 
+    private final TipoEquipamentoRepository tipoEquipamentoRepository;
+
     @Autowired
-    private TipoEquipamentoRepository tipoEquipamentoRepository;
-
-    @Override
-    public TipoEquipamento findById(Long id) {
-        return tipoEquipamentoRepository.findById(id);
+    public TipoEquipamentoServiceImpl(TipoEquipamentoRepository tipoEquipamentoRepository) {
+        this.tipoEquipamentoRepository = tipoEquipamentoRepository;
     }
 
-    @Override
-    public List<TipoEquipamento> findAll() {
-        return tipoEquipamentoRepository.findAll();
-    }
-
-    @Override
-    @Transactional
     public TipoEquipamento save(TipoEquipamento tipoEquipamento) {
         return tipoEquipamentoRepository.save(tipoEquipamento);
     }
 
-    @Override
-    @Transactional
+    public List<TipoEquipamento> findAll() {
+        return tipoEquipamentoRepository.findAll();
+    }
+
+    public Optional<TipoEquipamento> findById(Long id) {
+        return tipoEquipamentoRepository.findById(id);
+    }
+
     public void delete(TipoEquipamento tipoEquipamento) {
         tipoEquipamentoRepository.delete(tipoEquipamento);
     }
