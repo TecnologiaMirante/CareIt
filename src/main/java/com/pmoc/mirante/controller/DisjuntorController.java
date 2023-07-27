@@ -49,7 +49,10 @@ public class DisjuntorController {
         if (tipoEquipamentoOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("TipoEquipamento not found");
         }
-        disjuntorModel.setTipoEquipamento(tipoEquipamentoOptional.get());
+
+        // Ajustar o tipo do tipoEquipamentoOptional para TipoEquipamento
+        TipoEquipamento tipoEquipamento = tipoEquipamentoOptional.get();
+        disjuntorModel.setTipoEquipamento(tipoEquipamento);
 
         // Verificar se o campo "station" não está nulo no DTO
         UUID stationId = disjuntorDTO.getStation();
