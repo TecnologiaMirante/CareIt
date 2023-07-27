@@ -43,7 +43,7 @@ public class AntenaDTO {
         private List<TransmissorModel> transmissor;
 
         @NotNull
-        private Long tipoEquipamentoID;
+        private Long tipoEquipamento;
 
         private UUID station;
 
@@ -53,7 +53,7 @@ public class AntenaDTO {
         public AntenaDTO(@NotNull @Valid Gerais gerais, @NotNull Status status, @NotNull Categories category,
                          @NotNull TiposAntena tipos_antena, @NotBlank String vr, @NotBlank Double fendas,
                          @NotBlank Double posicao_torre, @NotBlank String gain, @NotNull List<TransmissorModel> transmissor,
-                         @NotNull Long tipoEquipamentoID, UUID station) {
+                         @NotNull Long tipoEquipamento, UUID station) {
                 this.gerais = gerais;
                 this.status = status;
                 this.category = category;
@@ -63,7 +63,7 @@ public class AntenaDTO {
                 this.posicao_torre = posicao_torre;
                 this.gain = gain;
                 this.transmissor = transmissor;
-                this.tipoEquipamentoID = tipoEquipamentoID;
+                this.tipoEquipamento = tipoEquipamento;
                 this.station = station;
         }
 
@@ -141,12 +141,12 @@ public class AntenaDTO {
                 this.transmissor = transmissor;
         }
 
-        public Long getTipoEquipamentoID() {
-                return tipoEquipamentoID;
+        public Long getTipoEquipamento() {
+                return tipoEquipamento;
         }
 
-        public void setTipoEquipamentoID(Long tipoEquipamentoID) {
-                this.tipoEquipamentoID = tipoEquipamentoID;
+        public void setTipoEquipamento(Long tipoEquipamento) {
+                this.tipoEquipamento = tipoEquipamento;
         }
 
         public UUID getStation() {
