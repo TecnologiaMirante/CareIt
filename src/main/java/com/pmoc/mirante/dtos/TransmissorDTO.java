@@ -21,6 +21,7 @@ public record TransmissorDTO(
         Status status,
         @NotNull
         Categories category,
+
         @NotNull
         ReceptorModel receptor,
         @NotNull
@@ -31,6 +32,8 @@ public record TransmissorDTO(
         Double canal_fisico,
         @NotNull
         Double canal_virtual,
+        String acoplador_one,
+        String acoplador_two,
         @NotNull
         Long tipoEquipamentoID,
         UUID station

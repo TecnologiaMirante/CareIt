@@ -3,40 +3,53 @@ package com.pmoc.mirante.dtos;
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.enums.TiposAntena;
-import com.pmoc.mirante.models.checklist.TipoEquipamento;
-import com.pmoc.mirante.models.gerais.DadosGerais;
 import com.pmoc.mirante.models.gerais.Gerais;
 import com.pmoc.mirante.models.station.StationModel;
 import com.pmoc.mirante.models.transmissor.TransmissorModel;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import java.util.List;
 import java.util.UUID;
+import jakarta.validation.*;
+import jakarta.validation.constraints.*;
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class AntenaDTO {
 
-public record AntenaDTO(
         @NotNull
         @Valid
-        Gerais gerais,
+        private Gerais gerais;
+
         @NotNull
-        Status status,
+        private Status status;
+
         @NotNull
-        Categories category,
+        private Categories category;
+
         @NotNull
-        TiposAntena tipos_antena,
+        private TiposAntena tipos_antena;
+
         @NotBlank
-        String vr,
+        private String vr;
+
         @NotBlank
-        Double fendas,
+        private Double fendas;
+
         @NotBlank
-        Double posicao_torre,
+        private Double posicao_torre;
+
         @NotBlank
-        String gain,
+        private String gain;
+
         @NotNull
-        List<TransmissorModel> transmissor,
+        private List<TransmissorModel> transmissor;
+
         @NotNull
-        Long tipoEquipamentoID,
-        UUID station
-) {
+        private Long tipoEquipamentoID;
+
+        private UUID stationId;
 }
