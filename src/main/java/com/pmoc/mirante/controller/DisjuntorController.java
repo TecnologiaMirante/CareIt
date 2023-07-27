@@ -45,12 +45,10 @@ public class DisjuntorController {
 
         // Buscar TipoEquipamento pelo ID informado no DTO
         Long tipoEquipamentoId = disjuntorDTO.getTipoEquipamento();
-        Optional<TipoEquipamento> tipoEquipamentoOptional = Optional.ofNullable(tipoEquipamentoService.findById(tipoEquipamentoId));
+        Optional<TipoEquipamento> tipoEquipamentoOptional = tipoEquipamentoService.findById(tipoEquipamentoId);
         if (tipoEquipamentoOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("TipoEquipamento not found");
         }
-
-        // Ajustar o tipo do tipoEquipamentoOptional para TipoEquipamento
         TipoEquipamento tipoEquipamento = tipoEquipamentoOptional.get();
         disjuntorModel.setTipoEquipamento(tipoEquipamento);
 
@@ -60,9 +58,10 @@ public class DisjuntorController {
             // Buscar StationModel pelo ID informado no DTO
             Optional<StationModel> stationOptional = stationService.findById(stationId);
             if (stationOptional.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("StationModel not found");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Station not found");
             }
-            disjuntorModel.setStation(stationOptional.get());
+            StationModel station = stationOptional.get();
+            disjuntorModel.setStation(station);
         }
 
         disjuntorModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
