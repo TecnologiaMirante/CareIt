@@ -4,20 +4,14 @@ import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.enums.TiposAntena;
 import com.pmoc.mirante.models.gerais.Gerais;
-import com.pmoc.mirante.models.station.StationModel;
 import com.pmoc.mirante.models.transmissor.TransmissorModel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.List;
 import java.util.UUID;
-import jakarta.validation.*;
-import jakarta.validation.constraints.*;
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class AntenaDTO {
 
         @NotNull
@@ -51,5 +45,115 @@ public class AntenaDTO {
         @NotNull
         private Long tipoEquipamentoID;
 
-        private UUID stationId;
+        private UUID station;
+
+        public AntenaDTO() {
+        }
+
+        public AntenaDTO(@NotNull @Valid Gerais gerais, @NotNull Status status, @NotNull Categories category,
+                         @NotNull TiposAntena tipos_antena, @NotBlank String vr, @NotBlank Double fendas,
+                         @NotBlank Double posicao_torre, @NotBlank String gain, @NotNull List<TransmissorModel> transmissor,
+                         @NotNull Long tipoEquipamentoID, UUID station) {
+                this.gerais = gerais;
+                this.status = status;
+                this.category = category;
+                this.tipos_antena = tipos_antena;
+                this.vr = vr;
+                this.fendas = fendas;
+                this.posicao_torre = posicao_torre;
+                this.gain = gain;
+                this.transmissor = transmissor;
+                this.tipoEquipamentoID = tipoEquipamentoID;
+                this.station = station;
+        }
+
+        // Getters e setters
+
+        public Gerais getGerais() {
+                return gerais;
+        }
+
+        public void setGerais(Gerais gerais) {
+                this.gerais = gerais;
+        }
+
+        public Status getStatus() {
+                return status;
+        }
+
+        public void setStatus(Status status) {
+                this.status = status;
+        }
+
+        public Categories getCategory() {
+                return category;
+        }
+
+        public void setCategory(Categories category) {
+                this.category = category;
+        }
+
+        public TiposAntena getTipos_antena() {
+                return tipos_antena;
+        }
+
+        public void setTipos_antena(TiposAntena tipos_antena) {
+                this.tipos_antena = tipos_antena;
+        }
+
+        public String getVr() {
+                return vr;
+        }
+
+        public void setVr(String vr) {
+                this.vr = vr;
+        }
+
+        public Double getFendas() {
+                return fendas;
+        }
+
+        public void setFendas(Double fendas) {
+                this.fendas = fendas;
+        }
+
+        public Double getPosicao_torre() {
+                return posicao_torre;
+        }
+
+        public void setPosicao_torre(Double posicao_torre) {
+                this.posicao_torre = posicao_torre;
+        }
+
+        public String getGain() {
+                return gain;
+        }
+
+        public void setGain(String gain) {
+                this.gain = gain;
+        }
+
+        public List<TransmissorModel> getTransmissor() {
+                return transmissor;
+        }
+
+        public void setTransmissor(List<TransmissorModel> transmissor) {
+                this.transmissor = transmissor;
+        }
+
+        public Long getTipoEquipamentoID() {
+                return tipoEquipamentoID;
+        }
+
+        public void setTipoEquipamentoID(Long tipoEquipamentoID) {
+                this.tipoEquipamentoID = tipoEquipamentoID;
+        }
+
+        public UUID getStation() {
+                return station;
+        }
+
+        public void setStation(UUID station) {
+                this.station = station;
+        }
 }
