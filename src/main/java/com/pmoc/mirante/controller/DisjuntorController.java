@@ -1,8 +1,12 @@
 package com.pmoc.mirante.controller;
 
+import com.pmoc.mirante.models.checklist.TipoEquipamento;
 import com.pmoc.mirante.models.disjuntor.DisjuntorModel;
 import com.pmoc.mirante.dtos.DisjuntorDTO;
+import com.pmoc.mirante.models.station.StationModel;
 import com.pmoc.mirante.services.DisjuntorService;
+import com.pmoc.mirante.services.StationService;
+import com.pmoc.mirante.services.TipoEquipamentoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +27,41 @@ public class DisjuntorController {
 
     @Autowired
     private DisjuntorService disjuntorService;
+
+    @Autowired
+    private TipoEquipamentoService tipoEquipamentoService;
+
+    @Autowired
+    private StationService stationService;
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<Object> saveDisjuntor(@RequestBody @Valid DisjuntorDTO disjuntorDTO) {
         var disjuntorModel = new DisjuntorModel();
-        BeanUtils.copyProperties(disjuntorDTO, disjuntorModel);
+        BeanUtils.copyProperties(disjuntorDTO.getGerais(), disjuntorModel.getGerais());
+        disjuntorModel.setCorrente_maxima(disjuntorDTO.getCorrente_maxima());
+        disjuntorModel.setStatus(disjuntorDTO.getStatus());
+        disjuntorModel.setCategory(disjuntorDTO.getCategory());
+
+        // Buscar TipoEquipamento pelo ID informado no DTO
+        Long tipoEquipamentoId = disjuntorDTO.getTipoEquipamento();
+        Optional<TipoEquipamento> tipoEquipamentoOptional = Optional.ofNullable(tipoEquipamentoService.findById(tipoEquipamentoId));
+        if (tipoEquipamentoOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("TipoEquipamento not found");
+        }
+        disjuntorModel.setTipoEquipamento(tipoEquipamentoOptional.get());
+
+        // Verificar se o campo "station" não está nulo no DTO
+        UUID stationId = disjuntorDTO.getStation();
+        if (stationId != null) {
+            // Buscar StationModel pelo ID informado no DTO
+            Optional<StationModel> stationOptional = stationService.findById(stationId);
+            if (stationOptional.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("StationModel not found");
+            }
+            disjuntorModel.setStation(stationOptional.get());
+        }
+
         disjuntorModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(disjuntorService.save(disjuntorModel));
     }
