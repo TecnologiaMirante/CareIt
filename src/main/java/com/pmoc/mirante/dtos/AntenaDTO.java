@@ -3,10 +3,7 @@ package com.pmoc.mirante.dtos;
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
 import com.pmoc.mirante.enums.TiposAntena;
-import com.pmoc.mirante.models.checklist.TipoEquipamento;
-import com.pmoc.mirante.models.gerais.DadosGerais;
 import com.pmoc.mirante.models.gerais.Gerais;
-import com.pmoc.mirante.models.station.StationModel;
 import com.pmoc.mirante.models.transmissor.TransmissorModel;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -15,28 +12,148 @@ import jakarta.validation.constraints.NotNull;
 import java.util.List;
 import java.util.UUID;
 
-public record AntenaDTO(
+public class AntenaDTO {
+
         @NotNull
         @Valid
-        Gerais gerais,
+        private Gerais gerais;
+
         @NotNull
-        Status status,
+        private Status status;
+
         @NotNull
-        Categories category,
+        private Categories category;
+
         @NotNull
-        TiposAntena tipos_antena,
+        private TiposAntena tipos_antena;
+
         @NotBlank
-        String vr,
+        private String vr;
+
         @NotBlank
-        Double fendas,
+        private Double fendas;
+
         @NotBlank
-        Double posicao_torre,
+        private Double posicao_torre;
+
         @NotBlank
-        String gain,
+        private String gain;
+
         @NotNull
-        List<TransmissorModel> transmissor,
+        private List<TransmissorModel> transmissor;
+
         @NotNull
-        Long tipoEquipamentoID,
-        UUID station
-) {
+        private Long tipoEquipamento;
+
+        private UUID station;
+
+        public AntenaDTO() {
+        }
+
+        public AntenaDTO(@NotNull @Valid Gerais gerais, @NotNull Status status, @NotNull Categories category,
+                         @NotNull TiposAntena tipos_antena, @NotBlank String vr, @NotBlank Double fendas,
+                         @NotBlank Double posicao_torre, @NotBlank String gain, @NotNull List<TransmissorModel> transmissor,
+                         @NotNull Long tipoEquipamento, UUID station) {
+                this.gerais = gerais;
+                this.status = status;
+                this.category = category;
+                this.tipos_antena = tipos_antena;
+                this.vr = vr;
+                this.fendas = fendas;
+                this.posicao_torre = posicao_torre;
+                this.gain = gain;
+                this.transmissor = transmissor;
+                this.tipoEquipamento = tipoEquipamento;
+                this.station = station;
+        }
+
+        // Getters e setters
+
+        public Gerais getGerais() {
+                return gerais;
+        }
+
+        public void setGerais(Gerais gerais) {
+                this.gerais = gerais;
+        }
+
+        public Status getStatus() {
+                return status;
+        }
+
+        public void setStatus(Status status) {
+                this.status = status;
+        }
+
+        public Categories getCategory() {
+                return category;
+        }
+
+        public void setCategory(Categories category) {
+                this.category = category;
+        }
+
+        public TiposAntena getTipos_antena() {
+                return tipos_antena;
+        }
+
+        public void setTipos_antena(TiposAntena tipos_antena) {
+                this.tipos_antena = tipos_antena;
+        }
+
+        public String getVr() {
+                return vr;
+        }
+
+        public void setVr(String vr) {
+                this.vr = vr;
+        }
+
+        public Double getFendas() {
+                return fendas;
+        }
+
+        public void setFendas(Double fendas) {
+                this.fendas = fendas;
+        }
+
+        public Double getPosicao_torre() {
+                return posicao_torre;
+        }
+
+        public void setPosicao_torre(Double posicao_torre) {
+                this.posicao_torre = posicao_torre;
+        }
+
+        public String getGain() {
+                return gain;
+        }
+
+        public void setGain(String gain) {
+                this.gain = gain;
+        }
+
+        public List<TransmissorModel> getTransmissor() {
+                return transmissor;
+        }
+
+        public void setTransmissor(List<TransmissorModel> transmissor) {
+                this.transmissor = transmissor;
+        }
+
+        public Long getTipoEquipamento() {
+                return tipoEquipamento;
+        }
+
+        public void setTipoEquipamento(Long tipoEquipamento) {
+                this.tipoEquipamento = tipoEquipamento;
+        }
+
+        public UUID getStation() {
+                return station;
+        }
+
+        public void setStation(UUID station) {
+                this.station = station;
+        }
 }

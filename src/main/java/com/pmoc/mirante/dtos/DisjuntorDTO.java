@@ -2,8 +2,10 @@ package com.pmoc.mirante.dtos;
 
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
+import com.pmoc.mirante.models.checklist.TipoEquipamento;
 import com.pmoc.mirante.models.gerais.Gerais;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
@@ -24,9 +26,9 @@ public class DisjuntorDTO {
         private Categories category;
 
         @NotNull
-        private Long tipoEquipamentoId; // Utilize o tipo adequado para representar o ID do TipoEquipamento
+        private Long tipoEquipamento; // Utilize o tipo adequado para representar o ID do TipoEquipamento
 
-        private UUID stationId; // Utilize o tipo adequado para representar o ID da StationModel (se necessário)
+        private UUID station; // Utilize o tipo adequado para representar o ID da StationModel (se necessário)
 
         // Construtor, getters e setters (ou você pode usar Lombok)
 
@@ -34,13 +36,13 @@ public class DisjuntorDTO {
         }
 
         public DisjuntorDTO(@NotNull @Valid Gerais gerais, @NotNull int corrente_maxima, @NotNull Status status,
-                            @NotNull Categories category, @NotNull Long tipoEquipamentoId, UUID stationId) {
+                            @NotNull Categories category, @NotNull Long tipoEquipamento, UUID station) {
                 this.gerais = gerais;
                 this.corrente_maxima = corrente_maxima;
                 this.status = status;
                 this.category = category;
-                this.tipoEquipamentoId = tipoEquipamentoId;
-                this.stationId = stationId;
+                this.tipoEquipamento = tipoEquipamento;
+                this.station = station;
         }
 
         // getters e setters (ou você pode usar Lombok)
@@ -77,19 +79,19 @@ public class DisjuntorDTO {
                 this.category = category;
         }
 
-        public Long getTipoEquipamentoId() {
-                return tipoEquipamentoId;
+        public Long getTipoEquipamento() {
+                return tipoEquipamento;
         }
 
-        public void setTipoEquipamentoId(Long tipoEquipamentoId) {
-                this.tipoEquipamentoId = tipoEquipamentoId;
+        public void setTipoEquipamento(Long tipoEquipamentoId) {
+                this.tipoEquipamento = tipoEquipamentoId;
         }
 
-        public UUID getStationId() {
-                return stationId;
+        public UUID getStation() {
+                return station;
         }
 
-        public void setStationId(UUID stationId) {
-                this.stationId = stationId;
+        public void setStation(UUID stationId) {
+                this.station = stationId;
         }
 }

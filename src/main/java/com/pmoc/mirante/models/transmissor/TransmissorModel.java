@@ -34,6 +34,12 @@ public class TransmissorModel implements Serializable {
     private Double canal_fisico;
     @Column(nullable = false, length = 130)
     private Double canal_virtual;
+
+    @Column(nullable = false, length = 130)
+    private String acoplador_one;
+    @Column(nullable = false, length = 130)
+    private String acoplador_two;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 50)
     private Status status;
