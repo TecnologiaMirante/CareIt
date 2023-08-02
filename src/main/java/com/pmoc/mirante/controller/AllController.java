@@ -42,7 +42,6 @@ public class AllController {
     private TransmissorService transmissorService;
     private List<Object> myList = new ArrayList<>();
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<AtivosDTO<Object>> getAllAtivos() {
         var ativosDTO = new AtivosDTO<Object>();

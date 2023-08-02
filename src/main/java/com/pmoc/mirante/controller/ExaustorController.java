@@ -27,7 +27,7 @@ import java.util.UUID;
 public class ExaustorController {
     @Autowired
     private ExaustorService exaustorService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PostMapping
     public ResponseEntity<Object> saveExaustor(@RequestBody @Valid ExaustorDTO exaustorDTO) {
 
@@ -36,12 +36,12 @@ public class ExaustorController {
         exaustorModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(exaustorService.save(exaustorModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping
     public ResponseEntity<List<ExaustorModel>> gettAllExaustor() {
         return ResponseEntity.status(HttpStatus.OK).body(exaustorService.findAll());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneExaustor(@PathVariable(value = "id") UUID id) {
         Optional<ExaustorModel> exaustorModelOptional = exaustorService.findById(id);
@@ -50,7 +50,7 @@ public class ExaustorController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(exaustorModelOptional.get());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteExaustor(@PathVariable(value = "id") UUID id){
         Optional<ExaustorModel> exaustorModelOptional = exaustorService.findById(id);
@@ -60,7 +60,7 @@ public class ExaustorController {
         exaustorService.delete(exaustorModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Station deleted Successfully.");
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateExaustor(@PathVariable(value = "id") UUID id, @RequestBody @Valid ExaustorDTO exaustorDTO) {
         Optional<ExaustorModel> exaustorModelOptional = exaustorService.findById(id);

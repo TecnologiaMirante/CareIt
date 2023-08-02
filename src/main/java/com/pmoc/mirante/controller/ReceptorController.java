@@ -28,7 +28,7 @@ import java.util.UUID;
 public class ReceptorController {
     @Autowired
     private ReceptorService receptorService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PostMapping
     public ResponseEntity<Object> saveReceptor(@RequestBody @Valid StationDTO stationDTO) {
         var receptorModel = new ReceptorModel();
@@ -36,12 +36,12 @@ public class ReceptorController {
         receptorModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(receptorService.save(receptorModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping
     public ResponseEntity<List<ReceptorModel>> gettAllReceptor() {
         return ResponseEntity.status(HttpStatus.OK).body(receptorService.findAll());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneReceptor(@PathVariable(value = "id") UUID id) {
         Optional<ReceptorModel> receptorModelOptional = receptorService.findById(id);
@@ -50,7 +50,7 @@ public class ReceptorController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(receptorModelOptional.get());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteReceptor(@PathVariable(value = "id") UUID id){
         Optional<ReceptorModel> receptorModelOptional = receptorService.findById(id);
@@ -60,7 +60,6 @@ public class ReceptorController {
         receptorService.delete(receptorModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Station deleted Successfully.");
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateReceptor(@PathVariable(value = "id") UUID id, @RequestBody @Valid StationDTO stationDTO) {
         Optional<ReceptorModel> receptorModelOptional = receptorService.findById(id);

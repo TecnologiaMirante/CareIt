@@ -23,7 +23,7 @@ public class StationController {
 
     @Autowired
     private StationService stationService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PostMapping
     public ResponseEntity<Object> saveStation(@RequestBody @Valid StationDTO stationDTO) {
         var stationModel = new StationModel();
@@ -31,12 +31,12 @@ public class StationController {
 	stationModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(stationService.save(stationModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping
     public ResponseEntity<List<StationModel>> gettAllStations() {
         return ResponseEntity.status(HttpStatus.OK).body(stationService.findAll());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneStation(@PathVariable(value = "id") UUID id) {
         Optional<StationModel> stationModelOptional = stationService.findById(id);
@@ -45,7 +45,7 @@ public class StationController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(stationModelOptional.get());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteStation(@PathVariable(value = "id") UUID id){
         Optional<StationModel> stationModelOptional = stationService.findById(id);
@@ -55,7 +55,7 @@ public class StationController {
         stationService.delete(stationModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Station deleted Successfully.");
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateStation(@PathVariable(value = "id") UUID id, @RequestBody @Valid StationDTO stationDTO) {
         Optional<StationModel> stationModelOptional = stationService.findById(id);

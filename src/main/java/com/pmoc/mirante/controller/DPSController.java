@@ -22,7 +22,6 @@ import java.util.UUID;
 public class DPSController {
     @Autowired
     private DPSService dpsService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<Object> saveDPS(@RequestBody @Valid DPSDTO dpsdto) {
 
@@ -31,12 +30,11 @@ public class DPSController {
         dpsModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(dpsService.save(dpsModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<List<DPSModel>> gettAllDPS() {
         return ResponseEntity.status(HttpStatus.OK).body(dpsService.findAll());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneDPS(@PathVariable(value = "id") UUID id) {
         Optional<DPSModel> dpsModelOptional = dpsService.findById(id);
@@ -45,7 +43,7 @@ public class DPSController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(dpsModelOptional.get());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteDPS(@PathVariable(value = "id") UUID id){
         Optional<DPSModel> dpsModelOptional = dpsService.findById(id);
@@ -55,7 +53,7 @@ public class DPSController {
         dpsService.delete(dpsModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("DPS deleted Successfully.");
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateDPS(@PathVariable(value = "id") UUID id, @RequestBody @Valid DPSDTO dpsdto) {
         Optional<DPSModel> dpsModelOptional = dpsService.findById(id);

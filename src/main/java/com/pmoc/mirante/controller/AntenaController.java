@@ -23,7 +23,6 @@ public class AntenaController {
 
     @Autowired
     private AntenaService antenaService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<Object> saveAntena(@RequestBody @Valid AntenaDTO antenaDTO) {
         var antenaModel = new AntenaModel();
@@ -31,12 +30,10 @@ public class AntenaController {
         antenaModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UFC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(antenaService.save(antenaModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<List<AntenaModel>> getAllAntenas() {
         return ResponseEntity.status(HttpStatus.OK).body(antenaService.findAll());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneAntena(@PathVariable(value = "id") UUID id) {
         Optional<AntenaModel> antenaModelOptional = antenaService.findById(id);
@@ -45,7 +42,6 @@ public class AntenaController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(antenaModelOptional.get());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteAntena(@PathVariable(value = "id") UUID id) {
         Optional<AntenaModel> antenaModelOptional = antenaService.findById(id);
@@ -55,7 +51,6 @@ public class AntenaController {
         antenaService.delete(antenaModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Antena deleted successfully");
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateAntena(@PathVariable(value = "id") UUID id, @RequestBody @Valid AntenaDTO antenaDTO) {
         Optional<AntenaModel> antenaModelOptional = antenaService.findById(id);

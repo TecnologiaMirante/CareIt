@@ -22,7 +22,7 @@ import java.util.UUID;
 public class TransmissorController {
    @Autowired
     private TransmissorService transmissorService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PostMapping
     public ResponseEntity<Object> saveTransmissor(@RequestBody @Valid TransmissorDTO transmissorDTO) {
 
@@ -31,12 +31,12 @@ public class TransmissorController {
         transmissorModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(transmissorService.save(transmissorModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping
     public ResponseEntity<List<TransmissorModel>> gettAllStations() {
         return ResponseEntity.status(HttpStatus.OK).body(transmissorService.findAll());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneTransmissor(@PathVariable(value = "id") UUID id) {
         Optional<TransmissorModel> transmissorModelOptional = transmissorService.findById(id);
@@ -45,7 +45,7 @@ public class TransmissorController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(transmissorModelOptional.get());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteTransmissor(@PathVariable(value = "id") UUID id){
         Optional<TransmissorModel> transmissorModelOptional = transmissorService.findById(id);
@@ -55,7 +55,7 @@ public class TransmissorController {
         transmissorService.delete(transmissorModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Transmissor deleted Successfully.");
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateTransmissor(@PathVariable(value = "id") UUID id, @RequestBody @Valid  TransmissorDTO transmissorDTO) {
         Optional<TransmissorModel> transmissorModelOptional = transmissorService.findById(id);

@@ -22,7 +22,7 @@ import java.util.UUID;
 public class TelemetriaController {
     @Autowired
     private TelemetriaService telemetriaService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PostMapping
     public ResponseEntity<Object> saveTelemetria(@RequestBody @Valid TelemetriaDTO telemetriaDTO) {
         var telemetriaModel = new TelemetriaModel();
@@ -30,12 +30,12 @@ public class TelemetriaController {
         telemetriaModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(telemetriaService.save(telemetriaModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping
     public ResponseEntity<List<TelemetriaModel>> gettAllTelemetria() {
         return ResponseEntity.status(HttpStatus.OK).body(telemetriaService.findAll());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneTelemetria(@PathVariable(value = "id") UUID id) {
         Optional<TelemetriaModel> telemetriaModelOptional = telemetriaService.findById(id);
@@ -44,7 +44,7 @@ public class TelemetriaController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(telemetriaModelOptional.get());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteTelemetria(@PathVariable(value = "id") UUID id){
         Optional<TelemetriaModel> telemetriaModelOptional = telemetriaService.findById(id);
@@ -54,7 +54,7 @@ public class TelemetriaController {
         telemetriaService.delete(telemetriaModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Station deleted Successfully.");
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateTelemetria(@PathVariable(value = "id") UUID id, @RequestBody @Valid TelemetriaDTO telemetriaDTO) {
         Optional<TelemetriaModel> telemetriaModelOptional = telemetriaService.findById(id);

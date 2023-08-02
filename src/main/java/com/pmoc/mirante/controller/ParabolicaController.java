@@ -27,7 +27,7 @@ import java.util.UUID;
 public class ParabolicaController {
     @Autowired
     private ParabolicaService parabolicaService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PostMapping
     public ResponseEntity<Object> saveParabolica(@RequestBody @Valid ParabolicaDTO parabolicaDTO) {
         var parabolicaModel = new Parabolica();
@@ -35,12 +35,12 @@ public class ParabolicaController {
         parabolicaModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(parabolicaService.save(parabolicaModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping
     public ResponseEntity<List<Parabolica>> gettAllParabolica() {
         return ResponseEntity.status(HttpStatus.OK).body(parabolicaService.findAll());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneParabolica(@PathVariable(value = "id") UUID id) {
         Optional<Parabolica> parabolicaOptional = parabolicaService.findById(id);
@@ -49,7 +49,7 @@ public class ParabolicaController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(parabolicaOptional.get());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteParabolica(@PathVariable(value = "id") UUID id){
         Optional<Parabolica> parabolicaOptional = parabolicaService.findById(id);
@@ -59,7 +59,7 @@ public class ParabolicaController {
         parabolicaService.delete(parabolicaOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Station deleted Successfully.");
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateParabolica(@PathVariable(value = "id") UUID id, @RequestBody @Valid ParabolicaDTO parabolicaDTO) {
         Optional<Parabolica> parabolicaOptional = parabolicaService.findById(id);

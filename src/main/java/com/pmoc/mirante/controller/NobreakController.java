@@ -25,7 +25,7 @@ public class NobreakController {
 
     @Autowired
     private NobreakService nobreakService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PostMapping
     public ResponseEntity<Object> saveNobreak(@RequestBody @Valid NobrekDTO nobrekDTO) {
         var nobreakModel = new NobreakModel();
@@ -33,12 +33,12 @@ public class NobreakController {
         nobreakModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(nobreakService.save(nobreakModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping
     public ResponseEntity<List<NobreakModel>> getAllNobreak() {
         return ResponseEntity.status(HttpStatus.OK).body(nobreakService.findAll());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneNobreak(@PathVariable(value = "id") UUID id) {
         Optional<NobreakModel> nobreakModelOptional = nobreakService.findById(id);
@@ -47,7 +47,7 @@ public class NobreakController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(nobreakModelOptional.get());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteNobreak(@PathVariable(value = "id") UUID id){
         Optional<NobreakModel> nobreakModelOptional = nobreakService.findById(id);
@@ -57,7 +57,7 @@ public class NobreakController {
         nobreakService.delete(nobreakModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Nobreak deleted successfully");
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateNobreak(@PathVariable(value = "id") UUID id, @RequestBody @Valid NobrekDTO nobrekDTO){
         Optional<NobreakModel> nobreakModelOptional = nobreakService.findById(id);

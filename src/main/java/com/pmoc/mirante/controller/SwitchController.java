@@ -27,7 +27,7 @@ public class SwitchController {
 
     @Autowired
     private SwitchService switchService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PostMapping
     public ResponseEntity<Object> saveSwitch(@RequestBody @Valid SwitcherDTO switcherDTO) {
         var switcherModel = new SwitcherModel();
@@ -35,12 +35,11 @@ public class SwitchController {
         switcherModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(switchService.save(switcherModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<List<SwitcherModel>> gettAllSwitches() {
         return ResponseEntity.status(HttpStatus.OK).body(switchService.findAll());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneSwitch(@PathVariable(value = "id") UUID id) {
         Optional<SwitcherModel> switcherModelOptional = switchService.findById(id);
@@ -49,7 +48,7 @@ public class SwitchController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(switcherModelOptional.get());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteSwitches(@PathVariable(value = "id") UUID id){
         Optional<SwitcherModel> switcherModelOptional = switchService.findById(id);
@@ -59,7 +58,7 @@ public class SwitchController {
         switchService.delete(switcherModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Station deleted Successfully.");
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateSwitch(@PathVariable(value = "id") UUID id, @RequestBody @Valid SwitcherDTO switcherDTO) {
         Optional<SwitcherModel> switcherModelOptional = switchService.findById(id);

@@ -23,7 +23,6 @@ import java.util.UUID;
 public class CaboController {
    @Autowired
    private CaboService caboService;
-   @PreAuthorize("hasRole('ROLE_ADMIN')")
    @PostMapping
    public ResponseEntity<Object> saveCabo(@RequestBody @Valid CaboDTO caboDTO) {
        var caboModel = new CaboModel();
@@ -31,12 +30,12 @@ public class CaboController {
        caboModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
        return ResponseEntity.status(HttpStatus.CREATED).body(caboService.save(caboModel));
    }
-   @PreAuthorize("hasRole('ROLE_ADMIN')")
+
    @GetMapping
     public ResponseEntity<List<CaboModel>> getAllCabo() {
        return ResponseEntity.status(HttpStatus.OK).body(caboService.findAll());
    }
-   @PreAuthorize("hasRole('ROLE_ADMIN')")
+
    @GetMapping("/{id}")
     public ResponseEntity<Object> getOneCabo(@PathVariable(value = "id") UUID id) {
        Optional<CaboModel> caboModelOptional = caboService.findById(id);
@@ -45,7 +44,7 @@ public class CaboController {
        }
        return ResponseEntity.status(HttpStatus.OK).body(caboModelOptional.get());
    }
-   @PreAuthorize("hasRole('ROLE_ADMIN')")
+
    @DeleteMapping("/{id}")
    public ResponseEntity<Object> updateCabo(@PathVariable(value = "id") UUID id, @RequestBody @Valid CaboDTO caboDTO){
        Optional<CaboModel> caboModelOptional = caboService.findById(id);

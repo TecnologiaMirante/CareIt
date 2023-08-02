@@ -22,7 +22,7 @@ import java.util.UUID;
 public class ArCondicionadoController {
     @Autowired
     private ArcondicionadoService arcondicionadoService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PostMapping
     public ResponseEntity<Object> saveArcondicionado(@RequestBody @Valid ArCondicionadoDTO arCondicionadoDTO) {
         var arcondicionadoModel = new ArCondicionado();
@@ -30,12 +30,12 @@ public class ArCondicionadoController {
         arcondicionadoModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(arcondicionadoService.save(arcondicionadoModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping
     public ResponseEntity<List<ArCondicionado>> getAllArcondicionados() {
         return ResponseEntity.status(HttpStatus.OK).body(arcondicionadoService.findAll());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneArcondicionado(@PathVariable(value = "id") UUID id) {
         Optional<ArCondicionado> arCondicionadoOptional = arcondicionadoService.findById(id);
@@ -44,7 +44,7 @@ public class ArCondicionadoController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(arCondicionadoOptional.get());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteArcondicionado(@PathVariable(value = "id") UUID id) {
         Optional<ArCondicionado> arCondicionadoOptional = arcondicionadoService.findById(id);
@@ -54,7 +54,7 @@ public class ArCondicionadoController {
         arcondicionadoService.delete(arCondicionadoOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Arcondicionado deleted successfully");
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateArcondicionado(@PathVariable(value = "id") UUID id, @RequestBody @Valid ArCondicionadoDTO arCondicionadoDTO ){
         Optional<ArCondicionado> arCondicionadoOptional = arcondicionadoService.findById(id);

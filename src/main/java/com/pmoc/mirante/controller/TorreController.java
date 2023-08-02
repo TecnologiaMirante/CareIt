@@ -23,7 +23,7 @@ import java.util.UUID;
 public class TorreController {
     @Autowired
     private TorreService torreService;
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PostMapping
     public ResponseEntity<Object> saveTorre(@RequestBody @Valid TorreDTO torreDTO) {
 
@@ -32,12 +32,12 @@ public class TorreController {
         torreModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(torreService.save(torreModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping
     public ResponseEntity<List<TorreModel>> gettAllTorre() {
         return ResponseEntity.status(HttpStatus.OK).body(torreService.findAll());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneTorre(@PathVariable(value = "id") UUID id) {
         Optional<TorreModel> torreModelOptional = torreService.findById(id);
@@ -46,7 +46,7 @@ public class TorreController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(torreModelOptional.get());
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteTorre(@PathVariable(value = "id") UUID id){
         Optional<TorreModel> torreModelOptional = torreService.findById(id);
@@ -56,7 +56,7 @@ public class TorreController {
         torreService.delete(torreModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Torre deleted Successfully.");
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateTorre(@PathVariable(value = "id") UUID id, @RequestBody @Valid TorreDTO torreDTO) {
         Optional<TorreModel> torreModelOptional = torreService.findById(id);
