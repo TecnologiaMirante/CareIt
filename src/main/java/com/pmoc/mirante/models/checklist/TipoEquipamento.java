@@ -35,7 +35,7 @@ public class TipoEquipamento implements Serializable {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Checklist> checklist;
 
     @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
