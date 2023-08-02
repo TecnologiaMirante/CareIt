@@ -2,10 +2,8 @@ package com.pmoc.mirante.dtos;
 
 import com.pmoc.mirante.enums.Categories;
 import com.pmoc.mirante.enums.Status;
-import com.pmoc.mirante.models.checklist.TipoEquipamento;
 import com.pmoc.mirante.models.gerais.Gerais;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
@@ -31,9 +29,6 @@ public class DisjuntorDTO {
         private UUID station; // Utilize o tipo adequado para representar o ID da StationModel (se necessário)
 
         // Construtor, getters e setters (ou você pode usar Lombok)
-
-        public DisjuntorDTO() {
-        }
 
         public DisjuntorDTO(@NotNull @Valid Gerais gerais, @NotNull int corrente_maxima, @NotNull Status status,
                             @NotNull Categories category, @NotNull Long tipoEquipamento, UUID station) {
