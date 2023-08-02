@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
@@ -24,7 +25,6 @@ import java.util.UUID;
 @RequestMapping("/disjuntores")
 public class DisjuntorController {
 
-
     @Autowired
     private DisjuntorService disjuntorService;
 
@@ -34,6 +34,7 @@ public class DisjuntorController {
     @Autowired
     private StationService stationService;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<Object> saveDisjuntor(@RequestBody @Valid DisjuntorDTO disjuntorDTO) {
         var disjuntorModel = new DisjuntorModel();
@@ -63,10 +64,12 @@ public class DisjuntorController {
         disjuntorModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(disjuntorService.save(disjuntorModel));
     }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
     public ResponseEntity<List<DisjuntorModel>> getAllDisjuntor() {
         return ResponseEntity.status(HttpStatus.OK).body(disjuntorService.findAll());
     }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<Object> getOneDisjuntor(@PathVariable(value = "id") UUID id){
         Optional<DisjuntorModel> disjuntorModelOptional = disjuntorService.findById(id);
@@ -75,6 +78,7 @@ public class DisjuntorController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(disjuntorModelOptional.get());
     }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteDisjuntor(@PathVariable(value = "id") UUID id){
         Optional<DisjuntorModel> disjuntorModelOptional = disjuntorService.findById(id);
@@ -84,6 +88,7 @@ public class DisjuntorController {
         disjuntorService.delete(disjuntorModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Disjuntor deleted successfully");
     }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateDisjuntor(@PathVariable(value = "id") UUID id, @RequestBody @Valid DisjuntorDTO disjuntorDTO) {
         Optional<DisjuntorModel> disjuntorModelOptional = disjuntorService.findById(id);
