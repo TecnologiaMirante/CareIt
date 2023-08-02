@@ -23,8 +23,6 @@ public record DisjuntorDTO(
         Long tipoEquipamento,
         UUID station
 ) {
-        public DisjuntorDTO(DisjuntorModel disjuntorModel){
-                this(disjuntorModel.getGerais(), disjuntorModel.getCategory(),disjuntorModel.getStatus(),disjuntorModel.getCorrente_maxima(), disjuntorModel.getTipoEquipamento().getId(), disjuntorModel.getStation().getId());
-        }
+
 
 }
