@@ -38,32 +38,32 @@ public class TipoEquipamento implements Serializable {
     @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Checklist> checklist;
 
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ArCondicionado> arCondicionado;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<AntenaModel> antena;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CaboModel> cabo;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CombinadorModel> combinador;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<DisjuntorModel> disjuntor;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<DPSModel> dps;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ExaustorModel> exaustor;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<NobreakModel> nobreak;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Parabolica> parabolica;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ReceptorModel> receptor;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<SwitcherModel> switcher;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<TelemetriaModel> telemetria;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<TorreModel> torre;
-    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tipoEquipamento", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<TransmissorModel> transmissor;
 }
