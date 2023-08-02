@@ -65,7 +65,7 @@ public class DisjuntorController {
         disjuntorModel.setCreatedAt(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(disjuntorService.save(disjuntorModel));
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping
     public ResponseEntity<List<DisjuntorModel>> getAllDisjuntor() {
         return ResponseEntity.status(HttpStatus.OK).body(disjuntorService.findAll());
