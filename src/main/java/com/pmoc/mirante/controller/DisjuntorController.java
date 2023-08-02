@@ -25,6 +25,7 @@ import java.util.UUID;
 @RequestMapping("/disjuntores")
 public class DisjuntorController {
 
+
     @Autowired
     private DisjuntorService disjuntorService;
 
@@ -38,13 +39,10 @@ public class DisjuntorController {
     @PostMapping
     public ResponseEntity<Object> saveDisjuntor(@RequestBody @Valid DisjuntorDTO disjuntorDTO) {
         var disjuntorModel = new DisjuntorModel();
-        BeanUtils.copyProperties(disjuntorDTO.getGerais(), disjuntorModel.getGerais());
-        disjuntorModel.setCorrente_maxima(disjuntorDTO.getCorrente_maxima());
-        disjuntorModel.setStatus(disjuntorDTO.getStatus());
-        disjuntorModel.setCategory(disjuntorDTO.getCategory());
+        BeanUtils.copyProperties(disjuntorDTO, disjuntorModel);
 
         // Buscar TipoEquipamento pelo ID informado no DTO
-        Long tipoEquipamentoId = disjuntorDTO.getTipoEquipamento();
+        Long tipoEquipamentoId = disjuntorDTO.tipoEquipamento();
         Optional<TipoEquipamento> tipoEquipamentoOptional = tipoEquipamentoService.findById(tipoEquipamentoId);
         if (tipoEquipamentoOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("TipoEquipamento not found");
@@ -53,7 +51,7 @@ public class DisjuntorController {
         disjuntorModel.setTipoEquipamento(tipoEquipamento);
 
         // Verificar se o campo "station" não está nulo no DTO
-        UUID stationId = disjuntorDTO.getStation();
+        UUID stationId = disjuntorDTO.station();
         if (stationId != null) {
             // Buscar StationModel pelo ID informado no DTO
             Optional<StationModel> stationOptional = stationService.findById(stationId);
